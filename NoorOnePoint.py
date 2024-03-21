@@ -1,9 +1,11 @@
+
 import time
 from math import exp
 import numpy as np
 
 def noor_one_point(f, x0, tol, iterMax):
     """
+
     Función de Noor's One-Point para encontrar la raíz de una ecuación.
     
     Parámetros:
@@ -57,7 +59,7 @@ def noor_one_point(f, x0, tol, iterMax):
     tiempo = time.time() - start_time
     
     return x, error, k, tiempo
-"""
+
 # Define tu función f(x)
 def f(x):
     return exp(x)-x-10
@@ -71,38 +73,10 @@ start = time.time()
 xk, err, k, tiempo_ejec = noor_one_point(f, x0, tol, iterMax)
 stop = time.time()
 
-print("Aproximación de la raíz:", xk)
+print("Xk:", xk)
 print("Error:", err)
 print("Número de iteraciones:", k)
 print("Tiempo de ejecución:", "{:.10f}".format(tiempo_ejec), "segundos")
 print(f"Training time: {stop - start}s")
-"""
-# Constantes físicas
-k = 1.38e-23  # Constante de Boltzmann [J/K]
-T = 300  # Temperatura [K]
-q = 1.6e-19  # Carga elemental [C]
-V_T = k * T / q  # Voltaje térmico [V]
 
-# Parámetros del diodo
-I_s = 1e-12  # Corriente de saturación inversa [A]
-V_R = 0.7  # Tensión en directa aplicada al diodo [V]
-
-# Función que representa la ecuación de Shockley
-def shockley_equation(V):
-    try:
-        return I_s * (np.exp(V / (10*V_T)) - 1) - V_R
-    except OverflowError:
-        return np.inf
-
-# Llama a la función noor_one_point
-x0 = 0.0
-tol = 1e-10
-iterMax = 1000
-
-xk, err, k, tiempo_ejec = noor_one_point(shockley_equation, x0, tol, iterMax)
-
-print("Aproximación de la raíz:", xk)
-print("Error:", err)
-print("Número de iteraciones:", k)
-print("Tiempo de ejecución:", "{:.10f}".format(tiempo_ejec), "segundos")
 
